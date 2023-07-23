@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <form action="/shorten" method="post">
+        <h1>Shorten URL</h1>
+        <label></label>
+        <input type="text" name="url" pattern="^https?:\/\/(\w+?\.)+?\w+?\/?.*?$" placeholder="https://mywebsite.com" />
+        <div>
+            <button type="submit">Shorten</button>
+            <script>
+                const { error, success } = Object.fromEntries(new URLSearchParams(location.search));
+                if(error || success) document.currentScript.replaceWith((Object.assign(document.createElement("p"), { innerHTML: error ||
+                    `Shortened to http://localhost/${success}<i>click to copy</i>`, className: !!error, onclick: success && (() => navigator.clipboard
+                    .writeText(`http://localhost/${success}`)) })));
+            </script>
+        </div>
+    </form>
+</body>
+</html>

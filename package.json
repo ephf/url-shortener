@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "start": "node index.js",
+        "test": "nodemon --ignore url_map.json"
+    }
+}
