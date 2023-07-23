@@ -24,6 +24,8 @@ createServer((req, res) => {
         return;
     }
 
+    if(url == "/ping") return res.end("pong");
+
     if(url.substring(1) in urls) return res.writeHead(301, { "Location": urls[url.substring(1)] }).end();
 
     if(paths.includes(url)) url += ".html";
@@ -32,3 +34,5 @@ createServer((req, res) => {
         .on("error", () => res.writeHead(301, { "Location": "/" }))
         .pipe(res)
 }).listen(port, () => console.log(`listening on port ${port}`));
+
+setInterval(() => fetch("https://surl.hs.vc/ping"), 3600 * 1000 * 20);
