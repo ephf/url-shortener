@@ -2,7 +2,9 @@ const { createServer } = require("http");
 const { writeFile, createReadStream } = require("fs");
 const urls = require("./url_map.json");
 
-const port = process.env.PORT ?? 80;
+// const port = process.env.PORT ?? 80;
+// RENDER
+const port = 443;
 const paths = ["/"];
 const mime = { html: "text/html", css: "text/css", ico: "image/x-icon" };
 
@@ -25,7 +27,7 @@ createServer((req, res) => {
     if(url.substring(1) in urls) return res.writeHead(301, { "Location": urls[url.substring(1)] }).end();
 
     if(paths.includes(url)) url += ".html";
-    res.setHeader("Content-Type", mime[url.split(".").at(-1)] ?? "text/plain").statusCode = 200;
+    res.setHeader("Content-Type", mime[url.split(".")[1]] ?? "text/plain").statusCode = 200;
     createReadStream(`views${url}`)
         .on("error", () => res.writeHead(301, { "Location": "/" }))
         .pipe(res)
