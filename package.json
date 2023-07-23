@@ -1,6 +1,13 @@
 {
-    "scripts": {
-        "start": "node index.js",
-        "test": "nodemon --ignore url_map.json"
-    }
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "nodemon --ignore url_map.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
