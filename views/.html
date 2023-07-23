@@ -17,8 +17,8 @@
             <script>
                 const { error, success } = Object.fromEntries(new URLSearchParams(location.search));
                 if(error || success) document.currentScript.replaceWith((Object.assign(document.createElement("p"), { innerHTML: error ||
-                    `Shortened to http://localhost/${success}<i>click to copy</i>`, className: !!error, onclick: success && (() => navigator.clipboard
-                    .writeText(`http://localhost/${success}`)) })));
+                    `Shortened to https://surl.hs.vc/${success}<i>click to copy</i>`, className: !!error, onclick: success && (() => navigator.clipboard
+                    .writeText(`https://surl.hs.vc/${success}`)) })));
             </script>
         </div>
     </form>
